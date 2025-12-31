@@ -4,6 +4,7 @@ import { AppModule } from './app/app.module';
 import express from 'express';
 import { onRequest } from 'firebase-functions/v2/https';
 import { GlobalExceptionFilter } from './common/filters/http-exception.filter';
+import { Readable } from 'stream';
 
 const expressServer = express();
 
@@ -16,6 +17,23 @@ const createFunction = async (expressInstance) => {
     }
   );
   app.useGlobalFilters(new GlobalExceptionFilter());
+
+  app.use((req: any, res: any, next: any) => {
+    if (req.rawBody) {
+      console.log('[DEBUG] req.rawBody detected. Re-streaming for Multer...');
+      const stream = new Readable();
+      stream._read = () => {};
+      stream.push(req.rawBody);
+      stream.push(null);
+      
+      // Monkey-patch the request to look like a fresh stream
+      req.pipe = (dest: any) => stream.pipe(dest);
+      req.on = (type: string, handler: any) => stream.on(type, handler);
+    } else {
+      console.log('[DEBUG] No req.rawBody. Using standard stream.');
+    }
+    next();
+  });
 
   app.use((req, res, next) => {
     if (req.path.includes('/menu/scan')) {
