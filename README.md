@@ -94,6 +94,10 @@ flutter run -d chrome
 flutter
 
 Build app ---->
+// Incase of images change
+flutter pub get
+dart run flutter_launcher_icons
+
 dart run build_runner build --delete-conflicting-outputs
 
 flutter build apk --release
