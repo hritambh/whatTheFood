@@ -24,6 +24,8 @@ export const api = onRequest(
   { 
     secrets: ['OPENAI_API_KEY'],
     cors: true,
+    memory: '1GiB',
+    timeoutSeconds: 300,
   }, 
   expressServer
 );

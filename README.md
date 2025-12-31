@@ -99,3 +99,7 @@ npx firebase deploy --only functions
 
 https://api-wlh2ucswkq-uc.a.run.app/api
 
+Checking Logs ---->
+
+npx firebase functions:log
+
