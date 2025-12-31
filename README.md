@@ -85,7 +85,10 @@ And join the Nx community:
 
 <!-- COMMANDS -->
 
+Build app ---->
 dart run build_runner build --delete-conflicting-outputs
+
+flutter build apk --release
 
 
 <!-- Base Url -->
@@ -94,5 +97,5 @@ Build backend--->
 nx build-firebase api
 npx firebase deploy --only functions
 
-https://api-wlh2ucswkq-uc.a.run.app
+https://api-wlh2ucswkq-uc.a.run.app/api
 
