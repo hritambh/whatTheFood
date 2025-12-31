@@ -89,6 +89,7 @@ And join the Nx community:
 RUN SERVICES
 
 npx nx serve api
+flutter run -d chrome
 
 flutter
 
