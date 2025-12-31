@@ -85,6 +85,13 @@ And join the Nx community:
 
 <!-- COMMANDS -->
 
+
+RUN SERVICES
+
+npx nx serve api
+
+flutter
+
 Build app ---->
 dart run build_runner build --delete-conflicting-outputs
 
