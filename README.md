@@ -90,5 +90,9 @@ dart run build_runner build --delete-conflicting-outputs
 
 <!-- Base Url -->
 
+Build backend--->
+nx build-firebase api
+npx firebase deploy --only functions
+
 https://api-wlh2ucswkq-uc.a.run.app
 
