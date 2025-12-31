@@ -86,3 +86,9 @@ And join the Nx community:
 <!-- COMMANDS -->
 
 dart run build_runner build --delete-conflicting-outputs
+
+
+<!-- Base Url -->
+
+https://api-wlh2ucswkq-uc.a.run.app
+

@@ -15,12 +15,21 @@ export class OpenAIService {
   private readonly logger = new Logger(OpenAIService.name);
 
   constructor() {
+    const apiKey = process.env.OPENAI_API_KEY || 'dummy-key-for-build';
     if (!process.env.OPENAI_API_KEY) {
-      this.logger.error('OPENAI_API_KEY environment variable is missing');
-      throw new InternalServerErrorException('OPENAI_API_KEY is missing');
+      this.logger.warn('OPENAI_API_KEY missing. This is expected during build/deploy.');
+    } else {
+      this.logger.log('OpenAI service initialized with active key');
     }
-    this.logger.log('OpenAI service initialized successfully');
-    this.openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+    this.openai = new OpenAI({ apiKey });
+  }
+
+  private checkKey() {
+    if (!process.env.OPENAI_API_KEY) {
+        this.logger.error('Attempted to call OpenAI without a valid API Key');
+        throw new InternalServerErrorException('Server configuration error: Missing API Key');
+    }
   }
 
   /**
@@ -28,6 +37,7 @@ export class OpenAIService {
    * Returns the file ID (e.g., "file-abc123xyz").
    */
   private async uploadImageFile(imageBuffer: Buffer): Promise<string> {
+    this.checkKey();
     this.logger.log(`Starting image upload to OpenAI (${imageBuffer.length} bytes)...`);
     const startTime = Date.now();
 
@@ -66,6 +76,7 @@ export class OpenAIService {
    * Extracts menu items from an image using the Custom Responses API flow.
    */
   async extractFromImage(imageBuffer: Buffer): Promise<MenuItemDto[]> {
+    this.checkKey();
     const startTime = Date.now();
     const imageSizeKB = Math.round(imageBuffer.length / 1024);
     this.logger.log(`Starting menu extraction process for image (${imageSizeKB}KB)`);
@@ -220,6 +231,7 @@ If no items are found, return:
 
   // ... (enrichItem method remains unchanged)
   async enrichItem(item: MenuItemDto): Promise<EnrichedItemDto> {
+    this.checkKey();
     const startTime = Date.now();
     this.logger.log(`Starting enrichment for item: "${item.name}"`);
 

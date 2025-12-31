@@ -18,6 +18,14 @@
         }
       }
     },
+    "build-firebase": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "webpack-cli build --config webpack.firebase.config.js",
+        "args": ["--node-env=production"],
+        "cwd": "apps/api"
+      }
+    },
     "prune-lockfile": {
       "dependsOn": ["build"],
       "cache": true,

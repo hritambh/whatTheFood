@@ -21,12 +21,12 @@ class MenuRepository {
 
   String get _baseUrl {
     if (kIsWeb) {
-      return 'http://localhost:3000/api/menu';
+      return 'https://api-wlh2ucswkq-uc.a.run.app/api/menu';
     }
     if (Platform.isAndroid) {
-      return 'http://192.168.0.120:3000/api/menu';
+      return 'https://api-wlh2ucswkq-uc.a.run.app/api/menu';
     }
-    return 'http://192.168.0.120:3000/api/menu';
+    return 'https://api-wlh2ucswkq-uc.a.run.app/api/menu';
   }
 
   // --- 2. UPDATE SCAN METHOD ---
