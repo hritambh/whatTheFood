@@ -129,3 +129,8 @@ Checking Logs ---->
 
 npx firebase functions:log
 
+
+//logs
+
+https://console.firebase.google.com/u/0/project/whatthefood-590c1/functions
+npx firebase functions:logs
