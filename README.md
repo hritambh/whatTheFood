@@ -1,4 +1,15 @@
-# Menulens
+# WhatTheFood 📸🥗
+
+**WhatTheFood** is an AI-powered mobile application that transforms physical restaurant menus into interactive, digital experiences. By simply taking a photo, the app helps diners make informed food choices by revealing hidden details about their meal.
+
+### 🚀 What it Does
+WhatTheFood uses advanced Artificial Intelligence (OpenAI GPT-4o & DALL-E 3) to "read" menu images. It doesn't just extract text—it understands food. It automatically detects dietary types (Vegan/Veg/Non-Veg), flags potential allergens, infers ingredients, and even generates photorealistic images of dishes so you can see what you're ordering before it arrives.
+
+### 🗺️ User Journey
+1.  **Snap:** The user opens the app and takes a picture of a menu (or picks one from the gallery).
+2.  **Process:** The image is sent to the secure cloud backend where AI extracts dish names and descriptions.
+3.  **Enrich:** The app analyzes each item to tag allergens, ingredients, and dietary preferences.
+4.  **Visualize:** Users browse the digitized menu with clear safety tags and AI-generated food photos to decide what to eat with confidence.
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
